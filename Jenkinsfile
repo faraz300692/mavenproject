@@ -39,7 +39,7 @@ pipeline {
         
         stage ('Deploy to Tomcat'){
             steps {
-                sh 'sudo cp -r /var/lib/jenkins/workspace/Maven1/multi-module/webapp/target/*.war /usr/local/apache-tomcat-7.0.94/webapps/'       
+                sh 'sudo cp -r /var/lib/jenkins/workspace/maven1/multi-module/webapp/target/*.war /usr/local/apache-tomcat-9.0.24/webapps/'       
                 }
         
     }
