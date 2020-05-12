@@ -39,9 +39,10 @@ pipeline {
         
         stage ('Deploy to Tomcat'){
             steps {
-                sh 'sudo cp -r /var/lib/jenkins/workspace/maven1/multi-module/webapp/target/*.war /usr/local/apache-tomcat-9.0.24/webapps/'       
+                sshagent(['tomcat']) {
+                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@13.232.202.25:/prod/apache-tomcat-8.5.39/webapps/webapp.war'
                 }
-        
+            }      
+        }
     }
-}
 }
