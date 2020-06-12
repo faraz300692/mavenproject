@@ -1,6 +1,7 @@
 steps:
   - label: ":hammer: Tests"
     command: mvn compiler:compile
+    branches: "master"
     agents:
         queue: "medium"
 
@@ -8,6 +9,7 @@ steps:
 
   - label: ":package: Package"
     command: mvn package
+    branches: "master"
     agents:
         queue: "medium"
 
@@ -15,6 +17,7 @@ steps:
 
   - label: ":debian: Install"
     command: mvn install
+    branches: "master"
     agents:
         queue: "medium"
 
