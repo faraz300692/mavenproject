@@ -2,7 +2,9 @@ steps:
   - command: mvn clean
 
   - label: ":hammer: Tests"
-    command: mvn compiler:compile
+    commands: |
+        echo "compiling code"      
+        mvn clean compile
     agents:
         queue: "medium"
 
