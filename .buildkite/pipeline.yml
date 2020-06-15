@@ -1,4 +1,11 @@
 steps:
+
+  - label: ":mvn: Installing Maven on agent"
+    commands: apt install maven
+    branches: "master"
+    agents:
+        queue: "medium"
+        
   - label: ":hammer: Tests"
     commands: |
         echo "compiling code"      
