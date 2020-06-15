@@ -1,10 +1,9 @@
 steps:
-  - command: mvn clean
-
   - label: ":hammer: Tests"
     commands: |
         echo "compiling code"      
         mvn clean compile
+    branches: "master"
     agents:
         queue: "medium"
 
@@ -12,15 +11,15 @@ steps:
 
   - label: ":package: Package"
     command: mvn package
+    branches: "master"
     agents:
         queue: "medium"
 
   - wait
 
-  - label: ":debian: Publish"
+  - label: ":debian: Install"
     command: mvn install
+    branches: "master"
     agents:
-        # We use a medium sized instance instead of the normal small ones because
-        # gradle build is long
         queue: "medium"
 
