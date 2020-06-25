@@ -8,7 +8,7 @@ steps:
           service: "my-service"
           task-definition: "sport-service"
           task-family: "hello-world"
-          image: "746157492983.dkr.ecr.ap-southeast-1.amazonaws.com/scorz:sport-service-049dc24"
+          image: "${ECR_REPOSITORY}/hello-world:${BUILDKITE_BUILD_NUMBER}"
 
       
 
