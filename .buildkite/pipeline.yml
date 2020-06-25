@@ -1,32 +1,12 @@
 steps:
-
-  - label: ":mvn: Installing Maven on agent"
-    commands: apt install maven
-    branches: "master"
-    agents:
-        queue: "medium"
-        
-  - label: ":hammer: Tests"
-    commands: |
-        echo "compiling code"      
-        mvn clean compile
-    branches: "master"
-    agents:
-        queue: "medium"
-
-  - wait
-
-  - label: ":package: Package"
-    command: mvn package
-    branches: "master"
-    agents:
-        queue: "medium"
-
-  - wait
-
-  - label: ":debian: Install"
-    command: mvn install
-    branches: "master"
-    agents:
-        queue: "medium"
+  - label: ":ecs: :rocket:"
+    concurrency_group: "my-service-deploy"
+    concurrency: 1
+    plugins:
+      - ecs-deploy#v1.4.1:
+          cluster: "my-ecs-cluster"
+          service: "my-service"
+          task-definition: "examples/hello-world.json"
+          task-family: "hello-world"
+          image: "746157492983.dkr.ecr.ap-southeast-1.amazonaws.com/scorz:sport-service-049dc24"
 
