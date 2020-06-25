@@ -1,0 +1,14 @@
+[
+    {
+        "essential": true,
+        "image": "746157492983.dkr.ecr.ap-southeast-1.amazonaws.com/scorz:sport-service-049dc24",
+        "memory": 100,
+        "name": "sample",
+        "portMappings": [
+            {
+                "containerPort": 3001,
+                "hostPort": 3001
+            }
+        ]
+    }
+]
